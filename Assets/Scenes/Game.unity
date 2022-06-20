@@ -1041,7 +1041,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.362567, y: 1}
+    m_SensorSize: {x: 1.8525522, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -6173,11 +6173,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c980d1f27dc965a44af9a3652477671c, type: 3}
---- !u!1 &1784284359 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8703872773199547215, guid: 64c9d96775079344fac674889078804c, type: 3}
-  m_PrefabInstance: {fileID: 2087765675}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1796661862
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7708,22 +7703,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2110186076}
     m_Modifications:
-    - target: {fileID: 2466548407522557452, guid: 64c9d96775079344fac674889078804c, type: 3}
+    - target: {fileID: 1168473792, guid: 64c9d96775079344fac674889078804c, type: 3}
       propertyPath: m_Height
-      value: 0.99
+      value: 0.9
       objectReference: {fileID: 0}
-    - target: {fileID: 2466548407522557452, guid: 64c9d96775079344fac674889078804c, type: 3}
-      propertyPath: m_Radius
-      value: 0.21
-      objectReference: {fileID: 0}
-    - target: {fileID: 2466548407522557452, guid: 64c9d96775079344fac674889078804c, type: 3}
+    - target: {fileID: 1168473792, guid: 64c9d96775079344fac674889078804c, type: 3}
       propertyPath: m_Center.y
-      value: 0.49
+      value: -0.08
       objectReference: {fileID: 0}
-    - target: {fileID: 8703872773192268047, guid: 64c9d96775079344fac674889078804c, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 3377fbc78c4fe974ab6390c6405a4461, type: 2}
     - target: {fileID: 8703872773199547215, guid: 64c9d96775079344fac674889078804c, type: 3}
       propertyPath: m_Name
       value: Unity_Chan_generic
@@ -7779,57 +7766,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8703872773199976303, guid: 64c9d96775079344fac674889078804c, type: 3}
   m_PrefabInstance: {fileID: 2087765675}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &2087765678 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 8703872773192268047, guid: 64c9d96775079344fac674889078804c, type: 3}
-  m_PrefabInstance: {fileID: 2087765675}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &2087765679
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1784284359}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 1
-  m_Constraints: 112
-  m_CollisionDetection: 1
---- !u!114 &2087765680
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1784284359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd36bce4a043ce647a3439193feefcb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Force: 5
-  JumpForce: 7.5
-  Controller: {fileID: 2087765678}
-  rigidbody: {fileID: 2087765679}
-  horizontalAxisName: Horizontal
---- !u!65 &2087765681
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1784284359}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 0.5, y: 1, z: 0.5}
-  m_Center: {x: 0, y: 0.53, z: 0}
 --- !u!4 &2091444880 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4959206988071946, guid: c980d1f27dc965a44af9a3652477671c, type: 3}

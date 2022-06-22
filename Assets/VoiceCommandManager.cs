@@ -8,10 +8,9 @@ public class VoiceCommandManager : MonoBehaviour
 {
     public List<VoiceCommand> VoiceCommandList;
     private KeywordRecognizer m_Recognizer;
-    public Transform MouseTransform;
-    public Transform PrefabSpawnRoot;
 
-    public List<PrefabContainer> PrefabList;
+
+
     List<string> keywordList = new List<string>();
     void Start()
     {
@@ -22,6 +21,7 @@ public class VoiceCommandManager : MonoBehaviour
             switch (VoiceCommandList[i].CommandType)
             {
                 case VoiceCommand.COMMAND_TYPE.UNDEFINED:
+
                     break;
                 case VoiceCommand.COMMAND_TYPE.CREATE:
                     word += "create ";
@@ -30,13 +30,12 @@ public class VoiceCommandManager : MonoBehaviour
                     word += "move ";
                     break;
                 case VoiceCommand.COMMAND_TYPE.DELETE:
-                    word += "delete ";
+                    word += "break ";
                     break;
                 default:
                     break;
             }
-            word += VoiceCommandList[i].Actor + " ";
-            word += VoiceCommandList[i].PositionModifier;
+            word += VoiceCommandList[i].Text + " ";
             keywordList.Add(word);
         }
 
@@ -49,61 +48,49 @@ public class VoiceCommandManager : MonoBehaviour
     {
         if (args.text.Contains("move"))
         {
-            MoveObject(args.text);
+            //TODO
         }
         else if (args.text.Contains("create"))
         {
-            CreateObject(args.text);
+            SpawnAreaManager.Instance.CreateObject(args.text);
         }
-        else if (args.text.Contains("delete"))
+        else if (args.text.Contains("break"))
         {
-            DeleteObject(args.text);
+            SpawnAreaManager.Instance.DeleteObject(args.text);
+        }
+        else if (args.text.Contains("left"))
+        {
+            PlayerMovement.instances[0].UseVoiceInput = true;
+            PlayerMovement.instances[0].WalkControlValue = -1;
+        }
+        else if (args.text.Contains("right"))
+        {
+            PlayerMovement.instances[0].UseVoiceInput = true;
+            PlayerMovement.instances[0].WalkControlValue = 1;
+        }
+        else if (args.text.Contains("jump"))
+        {
+            PlayerMovement.instances[0].UseVoiceInput = true;
+            PlayerMovement.instances[0].JumpControlValue = true;
+        }
+        else if (args.text.Contains("stop"))
+        {
+            PlayerMovement.instances[0].UseVoiceInput = true;
+            PlayerMovement.instances[0].WalkControlValue = 0;
         }
         else
         {
             Debug.LogError("Error, Command not defined "+ args.text);
         }
     }
-    public GameObject GetPrefab(string text)
-    {
-        for (int i = 0; i < PrefabList.Count; i++)
-        {
-            if(text.Contains(PrefabList[i].ID))
-            {
-                return PrefabList[i].GO;
-            }
-        }
-        Debug.LogError("Prefab not found");
-        return null;
-    }
-    public void CreateObject(string text)
-    {
-        GameObject prefab = GetPrefab(text);
-        GameObject go = Instantiate(prefab, PrefabSpawnRoot);
-        go.transform.position = MouseTransform.position;
 
-        //TODO Mouse position (create cube there) vs player position
-    }
-    public void MoveObject(string text)
-    {
+    
 
-    }
-    public void DeleteObject(string text)
-    {
-
-    }
-    [System.Serializable]
-    public class PrefabContainer
-    {
-        public string ID;
-        public GameObject GO;
-    }
     [System.Serializable]
     public class VoiceCommand
     {
         public enum COMMAND_TYPE { UNDEFINED,CREATE,MOVE,DELETE}
         public COMMAND_TYPE CommandType;
-        public string Actor;
-        public string PositionModifier;
+        public string Text;
     }
 }

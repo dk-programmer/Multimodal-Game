@@ -8,6 +8,7 @@ using Sirenix.OdinInspector;
 using DG.Tweening;
 public class PlayerMovement : MonoBehaviour
 {
+    public static List<PlayerMovement> instances = new  List<PlayerMovement>(); 
     [Header("reference")]
     //reference
     public Player p;
@@ -27,17 +28,23 @@ public class PlayerMovement : MonoBehaviour
     private bool Jumping;
     private bool GroundContact;
 
-
+    public bool UseVoiceInput;
+    public float WalkControlValue;
+    public bool JumpControlValue;
 
     private bool blockDamage;
 
     private Coroutine jumpRoutine;
     private Tween rotationtween;
+    private void OnDisable()
+    {
+        instances.Remove(this);
+    }
     // Start is called before the first frame update
     void Start()
     {
         p = ReInput.players.GetPlayer(0);
-
+        instances.Add(this);
         p_events.OnJump += Jump;
         p_events.OnWalkRight += OnWalkRight;
         p_events.OnWalkLeft += OnWalkLeft;
@@ -49,12 +56,26 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (p.GetAxis("walk") == 0 && dir != 0)
+        
+        if(UseVoiceInput)
+        {
+            if (p.GetAnyNegativeButton() || p.GetAnyButton())
+            {
+                UseVoiceInput = false;
+            }
+        }
+        if(!UseVoiceInput)
+        {
+            WalkControlValue = p.GetAxis("walk");
+            JumpControlValue = p.GetButtonDown("jump");
+        }
+
+        if (WalkControlValue == 0 && dir != 0)
         {
             p_events.OnIdle?.Invoke();
             dir = 0;
         }
-        else if (p.GetAxis("walk") > 0)
+        else if (WalkControlValue > 0)
         {
             if(dir != 1)
             {
@@ -69,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
             look_dir = 1;
             p_events.OnWalkRight?.Invoke();
         }
-        else if (p.GetAxis("walk") < 0)
+        else if (WalkControlValue < 0)
         {
             if (dir != -1)
             {
@@ -98,8 +119,9 @@ public class PlayerMovement : MonoBehaviour
             Rigid.AddForce(new Vector3(target_velocity_x,0,0), ForceMode.VelocityChange);
         }
 
-        if (p.GetButtonDown("jump"))
+        if (JumpControlValue)
         {
+            JumpControlValue = false;
             if (Jumping) return;
             p_events.OnJump?.Invoke();
         }
@@ -173,7 +195,7 @@ public class PlayerMovement : MonoBehaviour
         var velocity_y = Rigid.velocity.y;
         var target_velocity_y = (1 * jumpstrength) - velocity_y;
         Rigid.AddForce(new Vector3(0, target_velocity_y, 0), ForceMode.VelocityChange);
-        while (p.GetButton("Jump") && Timer < MaxJumpTime)
+        while ((UseVoiceInput || p.GetButton("Jump")) && Timer < MaxJumpTime)
         {
             velocity_y = Rigid.velocity.y;
             target_velocity_y = (1 * jumpstrength) - velocity_y;

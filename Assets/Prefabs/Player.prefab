@@ -44,7 +44,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.74, y: 0.12, z: 0.67}
+  m_Size: {x: 0.47, y: 0.12, z: 0.3}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &706400726
 MonoBehaviour:
@@ -110,7 +110,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.75, y: 0.12, z: 0.75}
+  m_Size: {x: 0.47, y: 0.12, z: 0.3}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &947362896
 MonoBehaviour:
@@ -2496,6 +2496,9 @@ MonoBehaviour:
     m_RotationOrder: 4
   jumpstrength: 7
   MaxJumpTime: 0.2
+  UseVoiceInput: 0
+  WalkControlValue: 0
+  JumpControlValue: 0
 --- !u!114 &2087765683
 MonoBehaviour:
   m_ObjectHideFlags: 0

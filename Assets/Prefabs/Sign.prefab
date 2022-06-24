@@ -217,6 +217,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6986856529517876889}
     m_Modifications:
+    - target: {fileID: 1652375935173976, guid: e2e6074ecb11d484085bcaf483c2222c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1890007791615144, guid: e2e6074ecb11d484085bcaf483c2222c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1896393305323558, guid: e2e6074ecb11d484085bcaf483c2222c, type: 3}
       propertyPath: m_Name
       value: spear_wood
@@ -265,7 +273,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 205333029455664810, guid: e2e6074ecb11d484085bcaf483c2222c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e2e6074ecb11d484085bcaf483c2222c, type: 3}
 --- !u!1001 &6982582432963992333
 PrefabInstance:
@@ -274,9 +283,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3352878120578101648}
     m_Modifications:
+    - target: {fileID: 1033497732755076, guid: d2430f994d02d14409d28a3d0c2a1fc5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1061545183951636, guid: d2430f994d02d14409d28a3d0c2a1fc5, type: 3}
       propertyPath: m_Name
       value: cover_wood
+      objectReference: {fileID: 0}
+    - target: {fileID: 1446490715212980, guid: d2430f994d02d14409d28a3d0c2a1fc5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4874430748265876, guid: d2430f994d02d14409d28a3d0c2a1fc5, type: 3}
       propertyPath: m_RootOrder
@@ -334,7 +351,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 205920050144911408, guid: d2430f994d02d14409d28a3d0c2a1fc5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d2430f994d02d14409d28a3d0c2a1fc5, type: 3}
 --- !u!4 &6986856529517876889 stripped
 Transform:

@@ -9,12 +9,16 @@ public class SpawnAreaManager : MonoBehaviour
     List<GameObject> SpawnedObjectList = new List<GameObject>();
     public Transform MouseTransform;
     public Transform PrefabSpawnRoot;
+    public float MaxDeleteRange = 15;
     private void Start()
     {
         Instance = this;
     }
 
-
+    public void AddObjectToSpawnedObjectList(GameObject go)
+    {
+        SpawnedObjectList.Add(go);
+    }
 
     public void CreateObject(string text)
     {
@@ -41,6 +45,7 @@ public class SpawnAreaManager : MonoBehaviour
         {
             go = GetObjectNearPlayer(FilterName(text));
         }
+        if (Vector3.Distance(go.transform.position, PlayerMovement.instances[0].transform.position) > MaxDeleteRange) return;
         if (go == null) return;
         go.transform.DOScale(Vector3.zero, 0.3f);
         SpawnedObjectList.Remove(go);
